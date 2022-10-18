@@ -8,6 +8,17 @@ import { api } from '../services/api';
 import { Loading } from '../components/Loading';
 import { Error } from '../components/Error';
 
+interface ImagesResponse {
+  data: {
+    id: string;
+    title: string;
+    description: string;
+    url: string;
+    ts: number;
+  };
+  after: string;
+}
+
 export default function Home(): JSX.Element {
   async function fetchImages({ pageParam = null }): Promise<ImagesResponse> {
     const { data } = await api('/api/images', {
